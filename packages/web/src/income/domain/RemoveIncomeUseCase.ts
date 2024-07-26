@@ -1,5 +1,5 @@
 import type IncomeRepository from "./IncomeRepository"
-import type Income from "core/build/income/domain/Income"
+import type { Income } from "core"
 
 export default class RemoveIncomeUseCase {
   constructor(private incomeRepository: IncomeRepository) {}

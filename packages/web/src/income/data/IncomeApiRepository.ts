@@ -1,5 +1,5 @@
 import type IncomeRepository from "../domain/IncomeRepository";
-import type Income from "core/build/income/domain/Income";
+import type { Income } from "core";
 
 // NOTE: not used for the moment, only for some manual testing
 export default class IncomeApiRepository implements IncomeRepository {

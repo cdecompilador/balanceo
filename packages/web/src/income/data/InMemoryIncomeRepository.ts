@@ -1,7 +1,7 @@
 import type IncomeRepository from "../domain/IncomeRepository"
-import type Income from "core/build/income/domain/Income"
+import type { Income } from "core"
 
-let initialIncomes = [
+let initialIncomes: Array<Income> = [
   {
     id: "0",
     type: "job",

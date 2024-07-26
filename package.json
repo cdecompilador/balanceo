@@ -1,0 +1,20 @@
+{
+  "name": "balancer",
+  "version": "1.0.0",
+  "workspaces": [
+    "./packages/*"
+  ],
+  "scripts": {
+    "build": "npm run core build && npm run web build && npm run api build",
+    "core": "npm --workspace core run",
+    "api": "npm --workspace api run",
+    "web": "npm --workspace web run"
+  },
+  "author": "cdecompilador",
+  "description": "",
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.14.12",
+    "typescript": "^5.5.4"
+  }
+}

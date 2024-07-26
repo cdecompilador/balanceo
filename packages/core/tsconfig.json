@@ -1,11 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./build",
+    "outDir": "./dist",
     "rootDir": "./src",
     "composite": true,
     "declaration": true,
-    "module": "commonjs"
+    "declarationMap": true,
+    "sourceMap": true,
+    "strict": true
   },
   "include": [
     "./src/**/*"

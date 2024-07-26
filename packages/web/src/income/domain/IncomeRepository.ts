@@ -1,4 +1,4 @@
-import type Income from "core/build/income/domain/Income"
+import type { Income } from "core"
 
 export default interface IncomeRepository {
   get(): Promise<Array<Income>>

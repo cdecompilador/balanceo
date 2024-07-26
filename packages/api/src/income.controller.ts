@@ -4,7 +4,7 @@ import {
   Param, Body,
   HttpException, HttpStatus
 } from "@nestjs/common"
-import Income from "core/build/income/domain/Income"
+import { Income } from "core"
 import { IncomeService } from "./income.service"
 
 @Controller("api/income")

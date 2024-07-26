@@ -5,16 +5,13 @@ send you an alert e-mail (TODO)
 
 # How to run
 
-```sh
-cd packages/api
-npm install
-npm run start:dev
-```
+The project is a working monorepo with npm, so all commands should be executed
+from the root package
 
 ```sh
-cd packages/web
 npm install
-npm run dev
-```
 
-(TODO): Make it work as a proper monorepo
+npm run build
+npm run api start:dev
+npm run web dev 
+```

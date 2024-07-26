@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common"
-import Income from "core/build/income/domain/Income"
+import { Income } from "core"
 import { v4 as uuidv4 } from "uuid"
+
 
 @Injectable()
 export class IncomeService {
