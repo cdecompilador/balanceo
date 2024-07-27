@@ -1,15 +1,16 @@
+import type Balance from "../domain/Balance";
 import GetBalanceUseCase from "../domain/GetBalanceUseCase";
 import type { BalanceState } from "./BalanceState";
 
-type UpdateBalanceTextFn = (newBalance: string) => void;
+type UpdateBalanceTextFn = (newBalance: Balance) => void;
 
 class BalancePresenter {
-  private updateBalanceText: UpdateBalanceTextFn | undefined 
+  private updateBalance: UpdateBalanceTextFn | undefined 
 
   constructor(private getBalanceUseCase: GetBalanceUseCase) {}
 
-  init(updateBalanceText: UpdateBalanceTextFn) {
-    this.updateBalanceText = updateBalanceText
+  init(updateBalance: UpdateBalanceTextFn) {
+    this.updateBalance = updateBalance
 
     this.incomeChange()
   }
@@ -31,8 +32,8 @@ class BalancePresenter {
   }
 
   private render(balanceState: BalanceState) {
-    if (this.updateBalanceText && balanceState.kind === "LoadedBalanceState") {
-      this.updateBalanceText(balanceState.balance.totalAmmount.toString() + " €")
+    if (this.updateBalance && balanceState.kind === "LoadedBalanceState") {
+      this.updateBalance(balanceState.balance)
     }
   }
 }

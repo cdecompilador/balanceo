@@ -7,12 +7,17 @@ class GetBalanceUseCase {
   async execute(): Promise<Balance> {
     const incomes = await this.incomeRepository.get()
     let totalAmmount = 0
+    let periodicTotalAmmount = 0
     for (let i = 0; i < incomes.length; i++) {
       totalAmmount += incomes[i].ammount
+      if (incomes[i].periodic) {
+        periodicTotalAmmount += incomes[i].ammount
+      }
     }
 
     return {
-      totalAmmount
+      totalAmmount,
+      periodicTotalAmmount
     }
   }
 }

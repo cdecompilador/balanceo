@@ -2,24 +2,28 @@
 import { ref, defineProps } from "vue"
 
 import type BalancePresenter from "./BalancePresenter"
+import type Balance from "../domain/Balance";
 
 export interface BalanceProps {
   balancePresenter: BalancePresenter
 }
 
-const balanceText = ref("")
+const totalBalanceText = ref("")
+const periodicBalanceText = ref("")
 
 const props = defineProps<BalanceProps>()
 
-const updateBalanceText = (newText: string) => {
-  balanceText.value = newText
+const updateBalance = (newBalance: Balance) => {
+  totalBalanceText.value = newBalance.totalAmmount.toString() + " €"
+  periodicBalanceText.value = newBalance.periodicTotalAmmount.toString() + " €"
 }
 
-props.balancePresenter.init(updateBalanceText)
+props.balancePresenter.init(updateBalance)
 
 </script>
 
 <template>
-  Total Balance: {{ balanceText }}
+  Total Balance: {{ totalBalanceText }} <br>
+  Expected next month Balance: {{ periodicBalanceText }} <br>
 </template>
 
