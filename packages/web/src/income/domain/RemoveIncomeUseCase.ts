@@ -5,7 +5,7 @@ export default class RemoveIncomeUseCase {
   constructor(private incomeRepository: IncomeRepository) {}
 
   async execute(incomeId: string): Promise<Array<Income>> {
-    console.log(await this.incomeRepository.remove(incomeId))
+    await this.incomeRepository.remove(incomeId)
     return await this.incomeRepository.get()
   }
 }

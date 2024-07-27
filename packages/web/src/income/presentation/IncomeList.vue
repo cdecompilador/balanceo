@@ -4,7 +4,14 @@ import { RouterLink } from "vue-router"
 
 import IncomeItem from "./IncomeItem.vue"
 import { provideIncomeListPresenter } from "../DependenciesProvider"
-import { IncomeListState, initialIncomeListState } from "./IncomeListState"
+import { type IncomeListState, initialIncomeListState } from "./IncomeListState"
+import type BalancePresenter from "@/balance/presentation/BalancePresenter"
+
+export interface IncomeListProps {
+  balancePresenter: BalancePresenter
+}
+
+const props = defineProps<IncomeListProps>()
 
 const incomePresenter = provideIncomeListPresenter()
 
@@ -14,12 +21,13 @@ const changeState = (newIncomeListState: IncomeListState) => {
   incomeListState.value = newIncomeListState
 }
 
-incomePresenter.init(changeState)
+incomePresenter.init(changeState, props.balancePresenter)
 
 </script>
 
 <template>
   <br>
+  Incomes:
   <template v-if="incomeListState.kind==='LoadedIncomeListState' && incomeListState.incomes.length > 0">
   <ul v-for="income in incomeListState.incomes">
     <li>
