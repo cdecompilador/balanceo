@@ -9,7 +9,8 @@ export class IncomeService {
     id: uuidv4(),
     title: "example",
     type: "example",
-    ammount: 10
+    ammount: 10,
+    periodic: false
   }]
 
   getAll(): Array<Income> {

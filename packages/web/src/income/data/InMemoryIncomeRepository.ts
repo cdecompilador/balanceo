@@ -6,13 +6,15 @@ let initialIncomes: Array<Income> = [
     id: "0",
     type: "job",
     title: "sueldo",
-    ammount: 200
+    ammount: 200,
+    periodic: true
   },
   {
     id: "1",
     type: "transfer",
     title: "regalo cumpleaños",
-    ammount: 10
+    ammount: 10,
+    periodic: false 
   }
 ]
 
@@ -34,14 +36,15 @@ export default class InMemoryIncomeRepository implements IncomeRepository {
     })
   }
   
-  add(title: string, type: string, ammount: number): Promise<true> {
+  add(title: string, type: string, ammount: number, periodic: boolean): Promise<true> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const newIncome: Income = {
           id: (initialIncomes.length + 1).toString(),
-          title: title,
-          type: type,
-          ammount: ammount
+          title,
+          type,
+          ammount,
+          periodic
         }
         initialIncomes = [ ...initialIncomes, newIncome ]
         console.log(initialIncomes)

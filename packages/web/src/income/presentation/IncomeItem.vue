@@ -9,8 +9,8 @@ const emit = defineEmits(["income-removed"])
 
 <template>
   <div>
-    <div>{{ props.income.title }} </div>
-    <div>{{ props.income.ammount }} €</div>
+    <div>{{ props.income.title }} {{ props.income.periodic ? "⟳" : "" }} </div>
+    <div>{{ props.income.ammount }} € </div>
     <button @click="emit('income-removed', props.income.id)">Remove</button>
   </div>
 </template>

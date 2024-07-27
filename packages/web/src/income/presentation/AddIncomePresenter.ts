@@ -11,8 +11,8 @@ export default class AddIncomePresenter {
     this.redirectHome = redirectHome
   }
 
-  addIncomeFromForm(title: string, type: string, ammount: number) {
-    this.addIncomeUseCase.execute(title, type, ammount)
+  addIncomeFromForm(title: string, type: string, ammount: number, periodic: boolean) {
+    this.addIncomeUseCase.execute(title, type, ammount, periodic)
       .then((_) => {
         if (this.redirectHome)
           this.redirectHome()

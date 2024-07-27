@@ -35,12 +35,13 @@ export default class IncomeApiRepository implements IncomeRepository {
     }
   }
   
-  async add(title: string, type: string, ammount: number): Promise<true> {
+  async add(title: string, type: string, ammount: number, periodic: boolean): Promise<true> {
     try {
       const newIncome = {
         title,
         type,
-        ammount
+        ammount,
+        periodic
       }
 
       const response = await fetch(`${this.baseApiUrl}/income`, {

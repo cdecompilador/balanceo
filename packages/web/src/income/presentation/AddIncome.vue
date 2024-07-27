@@ -12,15 +12,16 @@ addIncomePresenter.init(() => {
 
 function getFormData() {
   const title = document.getElementById("title").value;
-  let type = undefined;
+  let type; 
   if (document.getElementById("type-salary").checked) {
     type = "salary" 
   } else if (document.getElementById("type-transfer").checked) {
     type = "transfer"
   }
-  const ammount = parseInt(document.getElementById("ammount").value);
+  const ammount = parseInt(document.getElementById("ammount").value)
+  const periodic = document.getElementById("periodic").checked
 
-  addIncomePresenter.addIncomeFromForm(title, type, ammount)
+  addIncomePresenter.addIncomeFromForm(title, type, ammount, periodic)
 }
 </script>
 
@@ -37,6 +38,9 @@ function getFormData() {
 
     <label>Ammount:</label> <br>
     <input type="number" id="ammount" placeholder="ex: 100 €"></input> <br> <br>
+
+    <label>Periodic:</label> <br>
+    <input type="checkbox" id="periodic"></input> <br> <br>
 
     <input type="submit" value="Add"></input>
   </form>
