@@ -2,28 +2,30 @@
 import { ref, defineProps } from "vue"
 
 import type BalancePresenter from "./BalancePresenter"
-import type Balance from "../domain/Balance";
+import type Balance from "../domain/Balance"
+import type { BalanceState } from "./BalanceState"
+import { initialBalanceState, type LoadingBalanceState, type LoadedBalanceState } from "./BalanceState"
 
 export interface BalanceProps {
   balancePresenter: BalancePresenter
 }
 
-const totalBalanceText = ref("")
-const periodicBalanceText = ref("")
+const balanceState = ref(initialBalanceState)
 
 const props = defineProps<BalanceProps>()
 
-const updateBalance = (newBalance: Balance) => {
-  totalBalanceText.value = newBalance.totalAmmount.toString() + " €"
-  periodicBalanceText.value = newBalance.periodicTotalAmmount.toString() + " €"
-}
+const updateState = (newState: BalanceState) => balanceState.value = newState
 
-props.balancePresenter.init(updateBalance)
+props.balancePresenter.init(updateState)
 
 </script>
 
 <template>
-  Total Balance: {{ totalBalanceText }} <br>
-  Expected next month Balance: {{ periodicBalanceText }} <br>
+  <div v-if="balanceState.kind === 'LoadingBalanceState'">
+    Loading...
+  </div>
+  <div v-if="balanceState.kind === 'LoadedBalanceState'">
+    Total Balance: <strong>{{ balanceState.balance.totalAmmount + " €" }}</strong> <br>
+    Expected next month Balance: {{ balanceState.balance.periodicTotalAmmount + " €" }} <br>
+  </div>
 </template>
-

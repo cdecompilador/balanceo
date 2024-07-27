@@ -15,3 +15,7 @@ export interface ErrorBalanceState {
 }
 
 export type BalanceState = LoadedBalanceState | LoadingBalanceState | ErrorBalanceState
+
+export const initialBalanceState: BalanceState = {
+  kind: "LoadingBalanceState"
+}
