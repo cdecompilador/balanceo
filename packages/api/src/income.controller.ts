@@ -18,8 +18,9 @@ export class IncomeController {
 
   @Post()
   addIncome(@Body() incomeData: Omit<Income, "id">): Income {
-    console.log("AQUI")
-    if (!incomeData.title || !incomeData.type || !incomeData.ammount) {
+    // NOTE: the data needs to be validated here even if it was on the frontend
+    // TODO: I should use a Pipe 
+    if (!incomeData.title || !incomeData.type || !incomeData.ammount || !incomeData.periodic) {
       throw new HttpException("Invalid data", HttpStatus.BAD_REQUEST)
     }
 

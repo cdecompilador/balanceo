@@ -15,8 +15,9 @@ const balanceState = ref(initialBalanceState)
 const props = defineProps<BalanceProps>()
 
 const updateState = (newState: BalanceState) => balanceState.value = newState
+const getState = () => balanceState.value
 
-props.balancePresenter.init(updateState)
+props.balancePresenter.init(updateState, getState)
 
 </script>
 
@@ -25,7 +26,13 @@ props.balancePresenter.init(updateState)
     Loading...
   </div>
   <div v-if="balanceState.kind === 'LoadedBalanceState'">
-    Total Balance: <strong>{{ balanceState.balance.totalAmmount + " €" }}</strong> <br>
+    Total Balance: 
+    <strong>
+      {{ balanceState.balance.totalAmmount + " €" }}
+    </strong>
+      {{ balanceState.balance.eurUsdRatio ? "$" + (balanceState.balance.totalAmmount * balanceState.balance.eurUsdRatio) : "" }}
+    <br>
     Expected next month Balance: {{ balanceState.balance.periodicTotalAmmount + " €" }} <br>
+    <br>
   </div>
 </template>

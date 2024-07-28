@@ -17,7 +17,7 @@ class GetBalanceUseCase {
 
     return {
       totalAmmount,
-      periodicTotalAmmount
+      periodicTotalAmmount,
     }
   }
 }
